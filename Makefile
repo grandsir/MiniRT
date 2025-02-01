@@ -1,59 +1,84 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: databey <databey@student.42kocaeli.com.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/04 19:48:14 by databey           #+#    #+#              #
-#    Updated: 2024/08/04 19:51:30 by databey          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME    = minirt
+CC      = cc
+MKDIR   = mkdir
 
-NAME = minirt
+SRC_DIR = src
+OBJ_DIR = build/objs
 
-FLAGS = -g
+SRC = \
+    main.c \
+    error/error.c \
+    lighting/lighting_utils.c \
+    lighting/lighting.c \
+    lighting/shadow.c \
+    paint_img/antialiasing.c \
+    paint_img/paint_img.c \
+    parser/ambient.c \
+    parser/camera.c \
+    parser/chunk_utils.c \
+    parser/light.c \
+    parser/object.c \
+    parser/parser_utils.c \
+    parser/parser.c \
+    parser/vector_parser.c \
+    ray/ray_utils.c \
+    ray/ray.c \
+    shapes/cyl_faces_utils.c \
+    shapes/cyl_utils.c \
+    shapes/ft_object_list_utils.c \
+    shapes/ft_object_utils.c \
+    shapes/plane_utils.c \
+    shapes/sphere_utils.c \
+    utils/color_utils.c \
+    utils/elements_utils.c \
+    utils/hit_record_utils.c \
+    utils/hit_utils.c \
+    utils/hittable_utils.c \
+    utils/math_utils.c \
+    utils/utils.c \
+    utils/vec_utils.c
 
-SRC_DIR = ./srcs/
-OBJ_DIR = ./obj/
-INC_DIR = ./includes/
-LIBFT_DIR = ./libft/
-MINLBX_DIR = ./minilibx/
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-SRC_FILES = main.c utils.c 
-OBJ_FILES = $(SRC_FILES:.c=.o)
+ifdef ANTIALIAS
+    FLAGS = -Wall -Werror -Wextra -DANTI=1
+else
+    FLAGS = -Wall -Werror -Wextra -DANTI=5
+endif
 
-SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
-MINLBX = $(addprefix $(MINLBX_DIR), libmlx.a)
+LIBFT = libft/libft.a
+MLX42 = MLX42/libmlx42.a
 
-LNK  = -L $(LIBFT_DIR) -lft -L $(MINLBX_DIR) \
-		-Ofast -lmlx -framework OpenGL -framework AppKit
+HEADER = includes/minirt.h
 
-all: obj $(LIBFT) $(MINLBX) $(NAME)
+INCLUDES = -Iincludes -Ilibft
 
-obj:
-	@mkdir -p $(OBJ_DIR)
-$(OBJ_DIR)%.o:$(SRC_DIR)%.c
-	@gcc $(FLAGS) -I $(MINLBX_DIR) -I $(LIBFT_DIR) -I $(INC_DIR) -o $@ -c $<
+GLFW_LIB = -L /opt/homebrew/Cellar/glfw/3.4/lib
+
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
+	$(MKDIR) -p $(dir $@)
+	$(CC) -c $(FLAGS) $(INCLUDES) $< -o $@
+
+$(NAME): $(OBJS) $(LIBFT) $(MLX42)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) $(MLX42) $(GLFW_LIB) -lglfw -o $(NAME)
+
 $(LIBFT):
-	@make -C $(LIBFT_DIR)
-$(MINLBX):
-	@make -C $(MINLBX_DIR)
+	$(MAKE) -C libft
 
-$(NAME): $(OBJ)
-	@gcc $(OBJ) $(LNK) -lm -o $(NAME)
+$(MLX42):
+	$(MAKE) -C MLX42
+
+$(OBJ_DIR):
+	$(MKDIR) -p $(OBJ_DIR)
 
 clean:
-	@rm -Rf $(OBJ_DIR)
-	@make -C $(LIBFT_DIR) clean
-	@make -C $(MINLBX_DIR) clean
+	rm -rf $(OBJ_DIR)
+	$(MAKE) clean -C libft
 
 fclean: clean
-	@rm -f $(NAME)
-	@make -C $(LIBFT_DIR) fclean
+	rm -f $(NAME)
+	$(MAKE) fclean -C libft
 
 re: fclean all
-
-.PHONY: all clean fclean re
