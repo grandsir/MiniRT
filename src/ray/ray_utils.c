@@ -31,8 +31,8 @@ t_ray	get_ray(t_camera cam, float i, float j, t_window win)
 	float	u;
 	float	v;
 
-	u = ((float) i) / (win.width - 1);
-	v = ((float) j) / (win.height - 1);
-	return (ray_init(cam.origin, cam.btm_left_cnr
-			+ (u * cam.horiz) + (v * cam.vert) - cam.origin));
+	u = ((float)i) / (win.width - 1);
+	v = ((float)j) / (win.height - 1);
+	return (ray_init(cam.origin, cam.btm_left_cnr + (u * cam.horiz) + (v
+				* cam.vert) - cam.origin));
 }

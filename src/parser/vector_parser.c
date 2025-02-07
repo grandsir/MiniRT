@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_parser.c                                       :+:      :+:    :+:   */
+/*   vector_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: databey <databey@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: muyucego <muyucego@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:46:39 by databey           #+#    #+#             */
-/*   Updated: 2025/02/01 12:05:49 by databey          ###   ########.fr       */
+/*   Updated: 2025/02/07 22:12:02 by muyucego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ int	coordinate_to_vector(char *s, t_vector *vec4)
 	if (!split || count_rows(split) != 3)
 		return (EXIT_FAILURE);
 	free(s);
-	if (ctof(split[0], &x) || ctof(split[1], &y)
-		|| ctof(split[2], &z))
+	if (ctof(split[0], &x) || ctof(split[1], &y) || ctof(split[2], &z))
 		return (EXIT_FAILURE);
 	free_arr(split);
 	*vec4 = (t_vector){x, y, z, 0};
 	return (EXIT_SUCCESS);
 }
-

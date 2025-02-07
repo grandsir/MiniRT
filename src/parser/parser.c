@@ -72,8 +72,7 @@ t_global	parse_input(char *file)
 	while (line)
 	{
 		if (ft_strncmp(line, "\n", ft_strlen(line)))
-			assign_element(line,
-				return_type(line_to_chunk(line)), &elements);
+			assign_element(line, return_type(line_to_chunk(line)), &elements);
 		free(line);
 		line = get_next_line(fd);
 	}

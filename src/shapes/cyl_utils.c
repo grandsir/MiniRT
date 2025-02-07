@@ -15,15 +15,17 @@
 float	cyl_infinite(t_ray_hit hit, t_cyl *cyl)
 {
 	t_simd_3	simd_3;
-	t_ray	rray;
-	float	t;
-	float	y;
+	t_ray		rray;
+	float		t;
+	float		y;
 
 	rray.origin = hit.r->origin - cyl->center;
 	rray.origin = rodrigues(rray.origin, cyl->axis, cyl->angle);
 	rray.direction = rodrigues(hit.r->direction, cyl->axis, cyl->angle);
-	simd_3.a = rray.direction[0] * rray.direction[0] + rray.direction[2] * rray.direction[2];
-	simd_3.b = 2 * (rray.direction[0] * rray.origin[0] + rray.direction[2] * rray.origin[2]);
+	simd_3.a = rray.direction[0] * rray.direction[0] + rray.direction[2]
+		* rray.direction[2];
+	simd_3.b = 2 * (rray.direction[0] * rray.origin[0] + rray.direction[2]
+			* rray.origin[2]);
 	simd_3.c = rray.origin[0] * rray.origin[0] + rray.origin[2] * rray.origin[2]
 		- pow(cyl->radius, 2);
 	t = quadratic(simd_3);

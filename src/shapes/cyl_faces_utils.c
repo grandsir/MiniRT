@@ -14,11 +14,11 @@
 
 int	cyl_cap_bottom(t_ray_hit hit, t_cyl *cyl)
 {
-	t_plane			*plane;
+	t_plane	*plane;
 
 	plane = plane_init(cyl->center, cyl->n);
-	if (plane_hit(hit, plane)
-		&& length(hit.res->p - plane->point) <= cyl->radius)
+	if (plane_hit(hit, plane) && length(hit.res->p
+			- plane->point) <= cyl->radius)
 	{
 		if (dot_product(hit.res->n, cyl->n) > 0)
 			hit.res->n = (t_vector){0, 0, 0};
@@ -31,11 +31,11 @@ int	cyl_cap_bottom(t_ray_hit hit, t_cyl *cyl)
 
 int	cyl_cap_top(t_ray_hit hit, t_cyl *cyl)
 {
-	t_plane			*plane;
+	t_plane	*plane;
 
 	plane = plane_init(cyl->center + (cyl->n * cyl->height), cyl->n);
-	if (plane_hit(hit, plane)
-		&& length(hit.res->p - plane->point) <= cyl->radius)
+	if (plane_hit(hit, plane) && length(hit.res->p
+			- plane->point) <= cyl->radius)
 	{
 		if (dot_product(hit.res->n, cyl->n) < 0)
 			hit.res->n = (t_vector){0, 0, 0};
@@ -61,9 +61,9 @@ int	send_shape_cyl(t_ray_hit hit, t_cyl *cyl, int index)
 
 int	cyl_hittable(t_ray_hit hit, t_cyl *cyl)
 {
-	double			closest_so_far;
-	int				i;
-	int				closest_index;
+	double	closest_so_far;
+	int		i;
+	int		closest_index;
 
 	i = 0;
 	closest_index = -1;

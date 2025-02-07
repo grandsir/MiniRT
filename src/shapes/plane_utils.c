@@ -26,8 +26,8 @@ t_plane	*plane_init(t_vector point, t_vector vector)
 
 int	plane_hit(t_ray_hit hit, t_plane *p)
 {
-	float	denominator;
-	float	t;
+	float		denominator;
+	float		t;
 	t_vector	difference;
 
 	denominator = dot_product(p->vector, hit.r->direction);

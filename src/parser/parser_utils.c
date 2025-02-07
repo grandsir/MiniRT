@@ -81,9 +81,8 @@ char	*read_vector(char *line, t_vector *o, float min, float max)
 		ft_error(4);
 	if (coordinate_to_vector(line_to_chunk(line), &vec4))
 		ft_error_str(1, line);
-	if (min < max && (vec4[0] < min || vec4[0] > max
-			|| vec4[1] < min || vec4[1] > max
-			|| vec4[2] < min || vec4[2] > max))
+	if (min < max && (vec4[0] < min || vec4[0] > max || vec4[1] < min
+			|| vec4[1] > max || vec4[2] < min || vec4[2] > max))
 		ft_error_str(4, line);
 	*o = vec4;
 	return (line);

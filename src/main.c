@@ -41,9 +41,9 @@ void	free_elements(t_global *elements)
 
 int	main(int argc, char **argv)
 {
-	mlx_t			*mlx;
-	t_window			win;
-	t_global		elements;
+	mlx_t		*mlx;
+	t_window	win;
+	t_global	elements;
 
 	if (argc < 2)
 		ft_error(20);

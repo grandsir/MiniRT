@@ -15,7 +15,7 @@
 t_sphere	*parse_sphere(char *line, t_vector *color)
 {
 	t_sphere	*new;
-	t_vector		c;
+	t_vector	c;
 
 	new = malloc(sizeof(t_sphere));
 	if (!new)
@@ -30,8 +30,8 @@ t_sphere	*parse_sphere(char *line, t_vector *color)
 
 t_cyl	*parse_cyl(char *line, t_vector *color)
 {
-	t_cyl	*new;
-	t_vector		c;
+	t_cyl		*new;
+	t_vector	c;
 
 	new = malloc(sizeof(t_cyl));
 	if (!new)
@@ -51,7 +51,7 @@ t_cyl	*parse_cyl(char *line, t_vector *color)
 
 t_plane	*parse_plane(char *line, t_vector *color)
 {
-	t_plane	*new;
+	t_plane		*new;
 	t_vector	c;
 
 	new = malloc(sizeof(t_plane));
@@ -68,19 +68,16 @@ t_plane	*parse_plane(char *line, t_vector *color)
 int	*object_assign(char *line, t_tokens t, t_object **objs)
 {
 	t_object	*node;
-	t_vector			color;
+	t_vector	color;
 	t_object	*tmp;
 
 	node = NULL;
 	if (t == SP)
-		node = ft_objectnew(parse_sphere(line, &color),
-				NULL, NULL, color);
+		node = ft_objectnew(parse_sphere(line, &color), NULL, NULL, color);
 	else if (t == PL)
-		node = ft_objectnew(NULL, parse_plane(line, &color),
-				NULL, color);
+		node = ft_objectnew(NULL, parse_plane(line, &color), NULL, color);
 	else if (t == CY)
-		node = ft_objectnew(NULL, NULL,
-				parse_cyl(line, &color), color);
+		node = ft_objectnew(NULL, NULL, parse_cyl(line, &color), color);
 	tmp = *objs;
 	ft_objectadd_back(&tmp, node);
 	*objs = tmp;

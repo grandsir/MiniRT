@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: databey <databey@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: muyucego <muyucego@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 12:12:01 by databey           #+#    #+#             */
-/*   Updated: 2025/02/01 13:20:18 by databey          ###   ########.fr       */
+/*   Created: 2024/11/17 15:23:23 by muyucego          #+#    #+#             */
+/*   Updated: 2025/02/07 22:11:19 by muyucego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 float	dot_product(const t_vector x, const t_vector y)
 {
-	return (x[0] * y[0]
-		+ x[1] * y[1]
-		+ x[2] * y[2]);
+	return (x[0] * y[0] + x[1] * y[1] + x[2] * y[2]);
 }
 
 float	length_squared(t_vector x)

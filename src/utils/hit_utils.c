@@ -28,7 +28,7 @@ int	send_shape(t_ray_hit hit, t_object *lst)
 int	hit_ray_hit_list(t_ray_hit hit, t_object *lst)
 {
 	t_hit_result	tmp_rec;
-	int			hit_anything;
+	int				hit_anything;
 	double			closest_so_far;
 
 	hit_anything = 0;

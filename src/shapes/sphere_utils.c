@@ -28,8 +28,8 @@ int	sphere_hit(t_ray_hit hit, t_sphere *s)
 {
 	t_vector	oc;
 	t_simd_3	simd_3;
-	float	discriminant;
-	float	sqrtd;
+	float		discriminant;
+	float		sqrtd;
 
 	oc = hit.r->origin - s->center;
 	simd_3.a = length_squared(hit.r->direction);

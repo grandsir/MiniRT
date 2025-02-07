@@ -12,11 +12,10 @@
 
 #include "objects.h"
 
-t_object	*ft_objectnew(t_sphere *s, t_plane *p,
-	t_cyl *c, t_vector color)
+t_object	*ft_objectnew(t_sphere *s, t_plane *p, t_cyl *c, t_vector color)
 {
 	t_object	*new_element;
-	static int		i = 0;
+	static int	i = 0;
 
 	new_element = (t_object *)malloc(sizeof(t_object));
 	if (!new_element)

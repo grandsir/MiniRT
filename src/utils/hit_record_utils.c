@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: databey <databey@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: muyucego <muyucego@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:14:48 by databey            #+#    #+#             */
-/*   Updated: 2025/02/01 10:24:01 by databey          ###   ########.fr       */
+/*   Created: 2024/09/02 15:14:48 by databey           #+#    #+#             */
+/*   Updated: 2025/02/07 22:09:09 by muyucego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

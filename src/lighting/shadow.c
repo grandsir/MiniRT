@@ -12,11 +12,10 @@
 
 #include "lighting.h"
 
-int	find_object_in_front(t_ray_hit light_hit, t_ray r,
-	t_object *world)
+int	find_object_in_front(t_ray_hit light_hit, t_ray r, t_object *world)
 {
-	t_ray_hit		hit;
-	float			tmp_t;
+	t_ray_hit	hit;
+	float		tmp_t;
 	t_object	*start;
 
 	hit = ray_hit_init(&r, 0, INFINITY, hit_rec_init_empty());
@@ -29,13 +28,13 @@ int	find_object_in_front(t_ray_hit light_hit, t_ray r,
 		{
 			if (hit.res->t < tmp_t)
 			{
-				free (hit.res);
+				free(hit.res);
 				return (1);
 			}
 		}
 		start = start->prev;
 	}
-	free (hit.res);
+	free(hit.res);
 	return (0);
 }
 
@@ -46,5 +45,5 @@ void	check_shadow(t_object *world, t_ray light_r, t_lighting *l)
 	light_hit = ray_hit_init(&light_r, 0, INFINITY, hit_rec_init_empty());
 	if (find_object_in_front(light_hit, light_r, world))
 		l->if_s = 1;
-	free (light_hit.res);
+	free(light_hit.res);
 }

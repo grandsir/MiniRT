@@ -12,10 +12,10 @@
 
 #include "minirt.h"
 
-void	paint_img(t_window	win, t_global elements)
+void	paint_img(t_window win, t_global elements)
 {
-	int		j;
-	int		i;
+	int			j;
+	int			i;
 	t_vector	color;
 
 	j = 0;

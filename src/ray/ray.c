@@ -14,10 +14,10 @@
 
 int	closest_obj(t_ray r, t_object *world, int *ret)
 {
-	int				i;
-	int				j;
-	t_ray_hit		hit;
-	float			tmp_t;
+	int			i;
+	int			j;
+	t_ray_hit	hit;
+	float		tmp_t;
 
 	hit = ray_hit_init(&r, 0, INFINITY, hit_rec_init_empty());
 	i = 0;
@@ -37,15 +37,15 @@ int	closest_obj(t_ray r, t_object *world, int *ret)
 		j++;
 		world = world->next;
 	}
-	free (hit.res);
+	free(hit.res);
 	return (i);
 }
 
 t_object	*find_world_touched_first(t_ray r, t_object *world)
 {
-	int				i;
-	int				j;
-	int			ret;
+	int	i;
+	int	j;
+	int	ret;
 
 	ret = 0;
 	i = closest_obj(r, world, &ret);
@@ -62,8 +62,8 @@ t_object	*find_world_touched_first(t_ray r, t_object *world)
 
 t_vector	ray_color(t_ray r, t_global *elements)
 {
-	t_ray_hit		hit;
-	t_lighting		lighting;
+	t_ray_hit	hit;
+	t_lighting	lighting;
 	t_object	*world;
 
 	world = elements->objs;
@@ -72,12 +72,12 @@ t_vector	ray_color(t_ray r, t_global *elements)
 	if (world && hit_ray_hit_list(hit, world))
 	{
 		lighting = get_point_light(*elements->light, hit, world);
-		free (hit.res);
+		free(hit.res);
 		if (lighting.if_s == 1)
 			return (world->color * elements->ambient->color);
-		return ((world->color * elements->ambient->color)
-			+ lighting.diff + lighting.spec);
+		return ((world->color * elements->ambient->color) + lighting.diff
+			+ lighting.spec);
 	}
-	free (hit.res);
+	free(hit.res);
 	return ((t_vector){0, 0, 0, 0});
 }

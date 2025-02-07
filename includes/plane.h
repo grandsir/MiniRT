@@ -18,8 +18,8 @@ typedef struct s_plane
 {
 	t_vector	point;
 	t_vector	vector;
-}	t_plane;
+}				t_plane;
 
-t_plane	*plane_init(t_vector point, t_vector vector);
+t_plane			*plane_init(t_vector point, t_vector vector);
 
 #endif

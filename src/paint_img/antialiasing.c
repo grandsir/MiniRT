@@ -14,8 +14,8 @@
 
 t_vector	antialiasing(int i, int j, t_global elements, t_window win)
 {
-	float	s;
-	float	t;
+	float		s;
+	float		t;
 	t_vector	color;
 
 	s = 0.1;
@@ -24,8 +24,8 @@ t_vector	antialiasing(int i, int j, t_global elements, t_window win)
 		t = 0.1;
 		while (t < 1)
 		{
-			color = color + ray_color(
-					get_ray(*elements.cam, i + s, j + t, win), &elements);
+			color = color + ray_color(get_ray(*elements.cam, i + s, j + t, win),
+					&elements);
 			t += 0.1;
 		}
 		s += 0.1;

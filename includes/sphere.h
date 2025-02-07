@@ -19,11 +19,11 @@ typedef struct s_ray_hit	t_ray_hit;
 
 typedef struct s_sphere
 {
-	t_vector		center;
-	float		radius;
-}	t_sphere;
+	t_vector				center;
+	float					radius;
+}							t_sphere;
 
-t_sphere	*sphere_init(t_vector center, float radius);
-int			sphere_hit(t_ray_hit hit, t_sphere *s);
+t_sphere					*sphere_init(t_vector center, float radius);
+int							sphere_hit(t_ray_hit hit, t_sphere *s);
 
 #endif
